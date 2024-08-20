@@ -10,11 +10,6 @@ This project is a comprehensive application designed to manage users, objects, a
 4. [Running the Application](#running-the-application)
 5. [Running the Tests](#running-the-tests)
 6. [Endpoints](#endpoints)
-7. [Enhancements Beyond Requirements](#enhancements-beyond-requirements)
-8. [Project Structure](#project-structure)
-9. [TripMaster Client](#TripMaster)
-10. [TravelAgent Client](#TravelAgentFront)
-11. [Administartor Client](#UserManagementApplication)
 
 
 
