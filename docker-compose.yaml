@@ -1,0 +1,54 @@
+version: '3.8'
+services:
+  app:
+  
+    image: 'docker-spring-boot-postgres:latest'
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: app
+    depends_on:
+      - db
+    ports:
+      - "8084:8084" 
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/mydb
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQLDialect
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - APP_EXCEPTION_MESSAGE_DETAIL=true
+      - SPRING_H2_CONSOLE_ENABLED=true
+      - SPRING_H2_CONSOLE_PATH=/h2-console
+      - SPRING_H2_CONSOLE_SETTINGS_WEB_ALLOW_OTHERS=true
+  
+ 
+
+  db:
+    image: postgres
+    container_name: db
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=mydb
+      - POSTGRES_LOGGING='all'
+      - POSTGRES_LOG_MIN_MESSAGES=notice
+      - POSTGRES_LOG_STATEMENT='all'
+      - POSTGRES_LOG_DURATION=on
+    ports:
+      - "5432:5432"
+
+networks:
+  default:
+    driver: bridge
+   
+      
+  
+
+      
+      
+      
